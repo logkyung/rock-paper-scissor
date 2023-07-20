@@ -16,15 +16,19 @@ function getResult(me, other) {
 function App() {
   const [ hand, setHand ] = useState(INITIAL_VALUE);
   const [ otherHand, setOtherHand ] = useState(INITIAL_VALUE);
+  const [ gameHistory, setGameHistory ] = useState([]);
 
   const handleButtonClick = (nextHand) => {
     const nextOtherHand = generateRandomHand();
+    const nextHistoryItem = getResult(nextHand, nextOtherHand);
     setHand(nextHand);
     setOtherHand(nextOtherHand);
+    setGameHistory([...gameHistory, nextHistoryItem]);
   }
   const handleClearClick = () => {
     setHand(INITIAL_VALUE);
     setOtherHand(INITIAL_VALUE);
+    setGameHistory([]);
   }
 
   return (
@@ -36,6 +40,7 @@ function App() {
         VS
         <HandIcon value={otherHand} />
       </div>
+      <p>승부 기록: {gameHistory.join(', ')}</p>
       <div>
         <HandButton value="rock" onClick={handleButtonClick} />
         <HandButton value="scissor" onClick={handleButtonClick} />

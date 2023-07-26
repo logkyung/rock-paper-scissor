@@ -1,6 +1,6 @@
 function Button({ children, onClick }) {
   return (
-    <button onClick={onClick}>
+    <button className="ResetButton" onClick={onClick}>
       {children}
     </button>
   );

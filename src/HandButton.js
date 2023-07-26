@@ -1,5 +1,4 @@
 import HandIcon from "./HandIcon";
-import backgroundImg from './assets/purple.svg';
 import './HandButton.css';
 
 function HandButton({ value, onClick }) {
